@@ -1,4 +1,5 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Post, Req } from '@nestjs/common';
+import { Request } from 'express';
 
 @Controller('user')
 export class UserController {
@@ -7,4 +8,8 @@ export class UserController {
     return { name: 'Shaik Shahbaaz Alam', email: 'shahbaaz@gmail.com' };
   }
 
+  @Post()
+  store(@Req() req: Request) {
+    return req.body;
+  }
 }
