@@ -8,19 +8,19 @@ export class UserService {
     return { name: 'Shaik Shahbaaz Alam', email: 'shahbaaz@gmail.com' };
   }
 
-  getUser(params: { userId: number }) {
-    return params;
+  getUser(userId: number) {
+    return { userId };
   }
 
   store(body: createUserDto) {
     return body;
   }
 
-  update(body: updateUserDto, param: { userId: number }) {
-    return { body, param };
+  update(body: updateUserDto, userId: number) {
+    return { body, userId };
   }
 
-  deleteUser(params: { userId: number }) {
-    return params;
+  deleteUser(userId: number) {
+    return { userId };
   }
 }
