@@ -28,3 +28,12 @@
 6. Easy unit testing.
 7. Better Documentation(Trust me bro even i think this is not a feature in 2024).
 8. Built for enterprise apps.
+
+## Document Structure:
+There are 3 main components of Nest.
+1. Controllers
+2. Providers
+3. Modules
+
+- However point to be noted is each and every file is a class with some decoraters (@Injectable, @Controller, @Module etc).
+- Decorators just adds some meta data to the classes.
