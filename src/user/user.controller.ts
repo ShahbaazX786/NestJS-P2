@@ -8,31 +8,33 @@ import {
   Req,
 } from '@nestjs/common';
 import { Request } from 'express';
+import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
+  constructor(private user: UserService) {}
   @Get()
   getUsers() {
-    return { name: 'Shaik Shahbaaz Alam', email: 'shahbaaz@gmail.com' };
+    return this.user.getUsers();
   }
 
   @Get('/:userId')
   getUser(@Param() params: { userId: number }) {
-    return params;
+    return this.user.getUser(params);
   }
 
   @Post()
   store(@Req() req: Request) {
-    return req.body;
+    return this.user.store(req);
   }
 
   @Patch('/:userId')
-  update(@Req() req: Request) {
-    return req.body;
+  update(@Req() req: Request, @Param() param:{userId:number}) {
+    return this.user.update(req,param);
   }
 
   @Delete('/:userId')
   deleteUser(@Param() params: { userId: number }) {
-    return params;
+    return this.user.deleteUser(params);
   }
 }
