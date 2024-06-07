@@ -105,3 +105,15 @@ getUser(@Param() params: {userId:number}){
 - but it makes the code a bit simpler so we use it itseems.
 - Also do define the data type of the body we need to use DTO(Data Transfer Object).
   
+
+## Pipes & Validations:
+- For validations you need to install dependencies by referring the docs.
+- yarn add class-validator class-transformer 
+- After this go to main.ts and add app.use(useGlobalPipe(new validationpipe())). to enable validations.
+- And after this go and annotate the dtos fields with whatever validations you need.
+- Pipes are also classes which uses injectable annotation and extends pipetransform class.
+  - pipes have 2 main uses:
+    - Validation
+    - Transformation
+- One major thing is even though we provide dtos with 2 fields for any method and we give 3 fields in post req then it will return 3 fields if consoled the req.
+- To fix this we can add {whitelist:true} to the validationpipe() in main.ts method.
