@@ -76,3 +76,10 @@ getUser(@Param() params: {userId:number}){
 ```
 
 - Similar methods are @Patch(), @Delete();
+
+## Providers / Services:
+- A controller job is to just take requests and respond with whatever the response it has to respond with.
+- All the saving, deleting the actual code that works inside is to be placed in service / providers.
+- Services are annotated with @Injectable() decorator.
+- You can import and utilize a service in controller via constructor method.
+- remember to return the result in controller as well.(return of service works upto controller and from there controller has to return further).
