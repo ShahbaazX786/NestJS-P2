@@ -7,3 +7,14 @@
 6. But Why?
 7. It is because express is a minimal framework that kind of gives you the syntax reduction and code splitting etc. But it doesn't give you a proper set of rules to do so.. 
 8. That's why we can see every expressjs work is different in some way or the other.
+
+## Terminology
+1. Well if you are familiar with Angular then you will find this thing super replica of each other.
+2. Even the cli and its commands.
+   Like 
+   - nest new app name.
+   - nest generate service service-name.
+   - nest g provider provider-name.
+   - nest g controller controller-name.
+   - nest start
+   - nest build etc,.
