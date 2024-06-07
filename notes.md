@@ -37,3 +37,8 @@ There are 3 main components of Nest.
 
 - However point to be noted is each and every file is a class with some decoraters (@Injectable, @Controller, @Module etc).
 - Decorators just adds some meta data to the classes.
+
+## Modules:
+- Modules are the classes that are annotated with @Module({}) at the top of them.
+- A project / app must contain a root module.
+- It is highly advised to divide your app into as many modules as required.
