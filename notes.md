@@ -97,3 +97,11 @@ getUser(@Param() params: {userId:number}){
     - unit testing made easy
     - extending the app becomes easier
     - Faster development
+  
+
+## Req(), Body() & DTOs:
+- As we have already used the req method to handle the requests in post,patch requests.
+- But we have a better alternative that is.. @Body() which is nothing but req.body only.
+- but it makes the code a bit simpler so we use it itseems.
+- Also do define the data type of the body we need to use DTO(Data Transfer Object).
+  
