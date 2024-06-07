@@ -52,3 +52,27 @@ There are 3 main components of Nest.
 - Just creating a controller doesn't do much unless and until you tell NEST about the existence of that controller in Module({controllers:[AppController]}) controller's array of the decorator of the respective file in which you want to access that controller.
 - Also if you want to decide the route of the controller you can do so by defining the path in methods annotations.
 - EX: @GET(cats), @POST(cats/:id) etc.
+- We can also define the main common path (base route) in controller itself like
+  - @Controller('/users');
+- And by doing so each and every sub route, function in that controller file will get /users prefixed in the route.
+
+- @Req()- this is used to handle the request for any post method.
+Ex: 
+```JS
+@Post()
+store(@Req() req:Request){
+    return req.body;
+}
+```
+- Note: the Request is to be imported from express and not the nestjs common.
+
+- @Params() - this is kind of like the payload for get request that we send in url itself and not in body as compared to post method.
+Ex:
+```JS
+@Get('/:userId')
+getUser(@Param() params: {userId:number}){
+    return params;
+}
+```
+
+- Similar methods are @Patch(), @Delete();
