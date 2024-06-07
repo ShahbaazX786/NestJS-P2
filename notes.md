@@ -18,3 +18,13 @@
    - nest g controller controller-name.
    - nest start
    - nest build etc,.
+
+## Features:
+1. Nestjs was created to help devs create Monolith and microservices.
+2. It uses Typescript
+3. Learning curve is doable and easy if already familiar with angular.
+4. Good CLI
+5. Support for dozens of nest-specific modules that help you easily integrate with common tech and concepts like type ORM, Mongoose, GraphQL, Logging, Validation, Caching, Websockets and much more.
+6. Easy unit testing.
+7. Better Documentation(Trust me bro even i think this is not a feature in 2024).
+8. Built for enterprise apps.
