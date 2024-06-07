@@ -83,3 +83,17 @@ getUser(@Param() params: {userId:number}){
 - Services are annotated with @Injectable() decorator.
 - You can import and utilize a service in controller via constructor method.
 - remember to return the result in controller as well.(return of service works upto controller and from there controller has to return further).
+
+## Dependency Injection:
+- As we have used to import and use the service / provider file in our controller as private in constructor then it is called as dependency injection.
+- but what is it actually?
+  - Suppose class a has some dependency on class b we can import / extend the class and move ahead.
+  - but what if class b also has some dependency on few other classes like class c , class d and imagine the nested dependencies of nested classes.
+  - It would be a nightmare to handle each and every class everytime you make a modification.
+  - So to avoid this we can utilize DI by transferring the task of handling class dependencies and directly deal with only the required class is called as DI.
+  - Uses:
+    - loose coupling
+    - boiler plate code reduction
+    - unit testing made easy
+    - extending the app becomes easier
+    - Faster development
