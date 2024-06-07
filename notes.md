@@ -117,3 +117,5 @@ getUser(@Param() params: {userId:number}){
     - Transformation
 - One major thing is even though we provide dtos with 2 fields for any method and we give 3 fields in post req then it will return 3 fields if consoled the req.
 - To fix this we can add {whitelist:true} to the validationpipe() in main.ts method.
+
+- You can also have validations at param level when the datatype is simple number,string conversion.
