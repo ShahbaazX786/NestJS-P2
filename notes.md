@@ -42,3 +42,13 @@ There are 3 main components of Nest.
 - Modules are the classes that are annotated with @Module({}) at the top of them.
 - A project / app must contain a root module.
 - It is highly advised to divide your app into as many modules as required.
+
+## Controllers:
+- A controller's purpose is to receive requests for the app and serve response accordingly.
+- A controller is annotated with @Controller at top of the class.
+- A controller has many methods which vary according to the user needs.
+- And these methods in turn call the service layer (provider methods) and acts as an abstraction layer in itself.
+- Also a method is again annotated with method type ex: @GET(), @POST() etc.
+- Just creating a controller doesn't do much unless and until you tell NEST about the existence of that controller in Module({controllers:[AppController]}) controller's array of the decorator of the respective file in which you want to access that controller.
+- Also if you want to decide the route of the controller you can do so by defining the path in methods annotations.
+- EX: @GET(cats), @POST(cats/:id) etc.
