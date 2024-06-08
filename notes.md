@@ -225,3 +225,6 @@ After:
 6. then if version popsup you need to create a new db using command create database nest2;
 7. then checkout the db using command use nest2;
 8. then hit the api and see the results.
+
+- By adding jwt stretegy using passport we can enable the creation of access_token which is nothing but a jwt token when we hit login with correct data.
+- And this access_token we can again use to authorize the further reqs of other APIs.
