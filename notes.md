@@ -215,3 +215,13 @@ After:
   }
 ```
 - Remember to add the entities in the appmodule entities array when ever you added another new entity file and want to use it. (This will avoid us the no metadata found for User entity error in console.)
+
+## Mysql in local setup and utilization: 
+1. To use mysql in local you first need to install it locally.
+2. then set the env variables in system path.
+3. then you need to check if it is installed using command mysql --version. 
+4. then you need to login using the default user id and password which you might have set during installation.
+5. using the command mysql -u root -p and then enter password.
+6. then if version popsup you need to create a new db using command create database nest2;
+7. then checkout the db using command use nest2;
+8. then hit the api and see the results.
