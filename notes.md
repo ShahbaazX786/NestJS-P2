@@ -119,3 +119,99 @@ getUser(@Param() params: {userId:number}){
 - To fix this we can add {whitelist:true} to the validationpipe() in main.ts method.
 
 - You can also have validations at param level when the datatype is simple number,string conversion.
+
+
+## Connecting to a DB:
+- To access the DB we need to install libs related to typeorm
+  - yarn add @nestjs/typeorm typeorm mysql2
+- After adding these goto appmodule and in imports array configure the typeorm module.
+
+```JS
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { UserModule } from './user/user.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+@Module({
+  imports: [
+    UserModule,
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: '127.0.0.1',
+      port: 3306,
+      username: 'root',
+      password: 'peesword',
+      database: 'nest2',
+      entities: [User],
+      synchronize: true, //  enable this only in dev mode.
+    }),
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+
+```
+
+- Then we need to create an entity folder just like dto folder and create a user.entity.ts file in it.
+- Entity is also a class file which is annotated with @Entity().
+- This can be considered as a class which defines the strucuture of the table in the database.(similar to a Java Bean class).
+- Then we need to add this entity file in the module where we are using it by importing it and configuring it in the imports array.
+- Ex: see below user module.
+
+```JS
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './entity/user.entity';
+import { UserController } from './user.controller';
+import { UserService } from './user.service';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([User])],
+  controllers: [UserController],
+  providers: [UserService],
+})
+export class UserModule {}
+```
+
+- Now that we have imported and configured the entity in the user module, we now need to inject the same entity in the service file in constructor to utilize it.
+- And also after injecting it in the service file we need to annotate it with @InjectRepository() in constructor itself.
+- See below for reference: 
+
+```JS
+import { Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
+import { User } from './entity/user.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+
+@Injectable()
+export class UserService {
+  constructor(
+    @InjectRepository(User)
+    private userRepository: Repository<User>
+    ) {}
+  getUsers() {
+    return { name: 'Shaik Shahbaaz Alam', email: 'shahbaaz@gmail.com' };
+  }
+}
+```
+- After this step is done update or add your existing service methods to promises and utilize the repository methods like findOne(), find(), delete() etc.
+
+Ex:
+Before:
+```JS
+getUsers() {
+    return { 
+      name: 'Shaik Shahbaaz Alam',
+       email: 'shahbaaz@gmail.com'
+      };
+  }
+```
+After:
+```JS
+ getUsers(): Promise<User[]> {
+    return this.userRepository.find();
+  }
+```
+- Remember to add the entities in the appmodule entities array when ever you added another new entity file and want to use it. (This will avoid us the no metadata found for User entity error in console.)
