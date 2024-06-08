@@ -16,18 +16,19 @@ export class UserService {
   }
 
   getUser(userId: number) {
-    return { userId };
+    // return this.userRepository.findOneById(userId); //deprecated
+    return this.userRepository.findOne({ where: { id: userId } });
   }
 
   store(body: createUserDto) {
-    return body;
+    return this.userRepository.save(body);
   }
 
   update(body: updateUserDto, userId: number) {
-    return { body, userId };
+    return this.userRepository.update(userId, body);
   }
 
   deleteUser(userId: number) {
-    return { userId };
+    return this.userRepository.delete(userId);
   }
 }
