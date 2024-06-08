@@ -7,10 +7,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { createUserDto } from './dto/createUser.dto';
 import { updateUserDto } from './dto/updateUser.dto';
 import { UserService } from './user.service';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('user')
 export class UserController {
@@ -20,6 +22,7 @@ export class UserController {
     return this.user.getUsers();
   }
 
+  // @UseGuards(AuthGuard('jwt'))
   @Get('/:userId')
   getUser(@Param('userId', ParseIntPipe) userId: number) {
     return this.user.getUser(userId);
@@ -30,6 +33,7 @@ export class UserController {
     return this.user.createUser(body);
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Patch('/:userId')
   update(
     @Body() body: updateUserDto,
@@ -38,6 +42,7 @@ export class UserController {
     return this.user.update(body, userId);
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Delete('/:userId')
   deleteUser(@Param('userId', ParseIntPipe) userId: number) {
     return this.user.deleteUser(userId);
