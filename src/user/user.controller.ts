@@ -27,7 +27,7 @@ export class UserController {
 
   @Post()
   store(@Body() body: createUserDto) {
-    return this.user.store(body);
+    return this.user.createUser(body);
   }
 
   @Patch('/:userId')
